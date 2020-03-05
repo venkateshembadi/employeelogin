@@ -1,14 +1,20 @@
-package com.emptimetrack.model;
+package com.emptimetrack.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name = "employee")
-public class Employee {
+
+@Entity
+@Table(name = "employee")
+public class EmployeeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +24,9 @@ public class Employee {
 	private String location;
 	private Date swipeIn;
 	private Date swipeOut;
+	
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	public List<LoginEntity> login;
 
 	public Long getEid() {
 		return eid;
@@ -65,6 +74,14 @@ public class Employee {
 
 	public void setSwipeOut(Date swipeOut) {
 		this.swipeOut = swipeOut;
+	}
+
+	public List<LoginEntity> getLogin() {
+		return login;
+	}
+
+	public void setLogin(List<LoginEntity> login) {
+		this.login = login;
 	}
 
 }

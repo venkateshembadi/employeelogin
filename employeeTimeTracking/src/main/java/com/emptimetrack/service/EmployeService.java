@@ -2,14 +2,16 @@ package com.emptimetrack.service;
 
 import java.util.List;
 
-import com.emptimetrack.model.Employee;
+import com.emptimetrack.entity.EmployeeEntity;
 
 public interface EmployeService {
 
-	List<Employee> list();
+	List<EmployeeEntity> list();
 
-	long saveEmployee(Employee emp);
+	long saveEmployee(EmployeeEntity emp);
 	
-	long updateSwipeHours(Employee emp);
+	long updateSwipeHours(EmployeeEntity emp);
+
+	
 
 }

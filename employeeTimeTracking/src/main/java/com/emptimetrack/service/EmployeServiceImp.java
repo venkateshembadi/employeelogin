@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.emptimetrack.dao.EmployeDao;
-import com.emptimetrack.model.Employee;
+import com.emptimetrack.entity.EmployeeEntity;
 
 @Service
 @Transactional(readOnly = true)
@@ -15,28 +15,20 @@ public class EmployeServiceImp implements EmployeService {
 
 	@Autowired
 	EmployeDao empdao;
-	
-	
+
 	@Override
-	public List<Employee> list() {
-		// TODO Auto-generated method stub
+	public List<EmployeeEntity> list() {
 		return empdao.list();
 	}
 
-
 	@Override
-	public long saveEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		 return empdao.save(emp);
-	}
-	
-	@Override
-	public long updateSwipeHours(Employee emp) {
-		// TODO Auto-generated method stub
-		 return empdao.save(emp);
+	public long saveEmployee(EmployeeEntity entity) {
+		return empdao.save(entity);
 	}
 
-	
-	
-	
+	@Override
+	public long updateSwipeHours(EmployeeEntity emp) {
+		return empdao.save(emp);
+	}
+
 }

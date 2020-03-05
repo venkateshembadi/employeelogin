@@ -11,7 +11,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.emptimetrack.model.Employee;
+import com.emptimetrack.entity.EmployeeEntity;
 
 
 @Repository
@@ -22,19 +22,19 @@ public class EmployeDaoImp implements EmployeDao {
 
 	
 	@Override
-	public List<Employee> list() {
+	public List<EmployeeEntity> list() {
 		 Session session = sessionFactory.getCurrentSession();
 	      CriteriaBuilder cb = session.getCriteriaBuilder();
-	      CriteriaQuery<Employee> cq = cb.createQuery(Employee.class);
-	      Root<Employee> root = cq.from(Employee.class);
+	      CriteriaQuery<EmployeeEntity> cq = cb.createQuery(EmployeeEntity.class);
+	      Root<EmployeeEntity> root = cq.from(EmployeeEntity.class);
 	      cq.select(root);
-	      Query<Employee> query = session.createQuery(cq);
+	      Query<EmployeeEntity> query = session.createQuery(cq);
 	      return query.getResultList();
 	}
 
 
 	@Override
-	public long save(Employee emp) {
+	public long save(EmployeeEntity emp) {
 		 sessionFactory.getCurrentSession().save(emp);
 	      return emp.getEid();
 	}
